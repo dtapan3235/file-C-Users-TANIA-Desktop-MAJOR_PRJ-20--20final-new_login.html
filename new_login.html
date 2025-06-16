@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           background: linear-gradient(to right, #a9e6f5, #2575fc);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            max-width: 350px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8d43add7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #672f80d7;
+        }
+        .switch ,.register {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="login-title">Student Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p class="switch" onclick="switchLogin()">Switch to Administration Login</p>
+         <p class="register" onclick="redirectToRegister()">Not registered? Click here to sign up</p>
+    </div>
+
+    <script>
+        let isAdmin = false;
+
+        function switchLogin() {
+            isAdmin = !isAdmin;
+            document.getElementById("login-title").innerText = isAdmin ? "Administration Login" : "Student Login";
+            document.querySelector(".switch").innerText = isAdmin ? "Switch to Student Login" : "Switch to Administration Login";
+        }
+
+        function login() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    
+    if (isAdmin) {
+        if (username === "admin" && password === "admin123") {
+            alert("Admin login successful!");
+            window.location.href = "about.html"; // Redirects to about.html
+        } else {
+            alert("Invalid admin credentials.");
+        }
+    } else {
+        if (username === "student" && password === "student123") {
+            alert("Student login successful!");
+            window.location.href = "about.html"; // Redirects to about.html
+        } else {
+            alert("Invalid student credentials.");
+        }
+    }
+}
+
+ function redirectToRegister() {
+            window.location.href = "register.html"; // Redirects to registration page
+        }
+    </script>
+
+</body>
+</html>
